@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grow, Grid } from '@mui/material';
 import Posts from './posts/Posts';
 import Form from './form/Form';
-import memories from '../images/memories.png';
+import Nostlagia from '../images/Nostlagia.jpg';
 import { AppBarWrapper, Heading, Image } from '../styles';
 
 
@@ -14,7 +14,7 @@ const Content = () => {
                 <Heading variant='h2' align='center'>
                 Nostalgia
                 </Heading>
-                <Image src={memories} alt='app-logo' height='60' />
+                <Image src={Nostlagia} alt='app-logo' height='60' />
             </AppBarWrapper>
             <Grow in>
                 <Container>
