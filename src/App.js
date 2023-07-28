@@ -1,37 +1,16 @@
-import React from 'react'
-import { Container, AppBar, Typography, Grow, Grid} from '@mui/material'
-import memories from './images/memories.png'
-import Post from './components/Posts/Posts'
-import Form from './components/Form/Form' 
-import useStyles from './styles'
-// import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-// import  { getPosts } from './actions/posts'
+import React from 'react';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import Content from './components/Content';
+import { createTheme } from '@mui/material/styles'
 
-
-function App() {
+const App = () => {
+  const theme = createTheme();
   return (
-<>
-  <Container maxidth='lg'>
-    <AppBar className={classes.appBar} position="static" color="inherit">
-      <Typography className={classes.heading} variant="h2" align="center">Nostalgia</Typography>
-      <img className={classes.image} src={memories} alt="memories" height="60" />
-    </AppBar>
-    <Grow in>
-      <Container>
-        <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-          <Grid item xs={12} sm={7}>
-            <Post />
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Form />
-          </Grid>
-        </Grid>
-      </Container>
-    </Grow>
-  </Container>
-</>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Content />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

@@ -1,12 +1,38 @@
-import { TextField, Button, Typography, Paper } from '@mui/material'
-import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
-import { createNewPost } from '../../reducers/postSlice';
+import React from 'react'
+import { styled } from '@mui/material/styles';
+import { Paper, Typography, TextField, Button} from '@mui/material';
+import FileBase from 'react-file-base64'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react';
+import { createNewPost } from '../../reducers/postSlice';
+
+const AppStyles = styled('div')(({ theme }) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+    },
+  },
+  paper: {
+    padding: theme.spacing(2),
+  },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  fileInput: {
+    width: '97%',
+    margin: '10px 0',
+  },
+  buttonSubmit: {
+    marginBottom: 10,
+  },
+}));
+
 
 const Form = () => {
+
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   // Use useState to manage the form data for the clear button
   const [formState, setFormState] = useState({
@@ -34,8 +60,8 @@ const Form = () => {
   };
 
   return (
-    <Paper className={classes.paper}>
-      <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+    <Paper className={AppStyles.paper}>
+      <form autoComplete='off' noValidate className={`${AppStyles.root} ${AppStyles.form}`} onSubmit={handleSubmit} > 
         <Typography variant='h6'>Creating a memory</Typography>
         <TextField
           name="creator"
@@ -69,7 +95,7 @@ const Form = () => {
           value={formState.tags}
           onChange={(e) => setFormState({ ...formState, tags: e.target.value })}
         />
-        <div className={classes.fileInput}>
+        <div className={AppStyles.fileInput}>
           <FileBase
             type='file'
             multiple={false}
@@ -77,7 +103,7 @@ const Form = () => {
           />
         </div>
         <Button
-          className={classes.buttonSubmit}
+          className={AppStyles.buttonSubmit}
           variant='contained'
           color='primary'
           size='large'
@@ -98,7 +124,7 @@ const Form = () => {
         </Button>
       </form>
     </Paper>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form
